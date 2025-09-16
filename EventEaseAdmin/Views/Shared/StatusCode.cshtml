@@ -1,0 +1,13 @@
+@model EventEaseAdmin.Models.ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+<div class="container mt-5">
+    <div class="alert alert-warning">
+        <h1 class="display-4">Oops!</h1>
+        <h2>@Model.Message</h2>
+        <p>Request ID: <code>@Model.RequestId</code></p>
+        <p>@Model.SuggestedAction</p>
+        <a href="/" class="btn btn-primary">Go Home</a>
+    </div>
+</div>

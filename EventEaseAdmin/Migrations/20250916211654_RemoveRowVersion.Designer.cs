@@ -4,6 +4,7 @@ using EventEaseAdmin.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventEaseAdmin.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250916211654_RemoveRowVersion")]
+    partial class RemoveRowVersion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,38 +58,6 @@ namespace EventEaseAdmin.Migrations
                     b.HasIndex("VenueId");
 
                     b.ToTable("Bookings");
-
-                    b.HasData(
-                        new
-                        {
-                            BookingId = new Guid("11111111-1111-1111-1111-111111111111"),
-                            BookingDate = new DateTime(2025, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndAt = new DateTime(2025, 10, 1, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventId = 1L,
-                            StartAt = new DateTime(2025, 10, 1, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = "Confirmed",
-                            VenueId = 1L
-                        },
-                        new
-                        {
-                            BookingId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            BookingDate = new DateTime(2025, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndAt = new DateTime(2025, 11, 15, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventId = 2L,
-                            StartAt = new DateTime(2025, 11, 15, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = "Pending",
-                            VenueId = 2L
-                        },
-                        new
-                        {
-                            BookingId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            BookingDate = new DateTime(2025, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndAt = new DateTime(2025, 12, 5, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventId = 3L,
-                            StartAt = new DateTime(2025, 12, 5, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = "Cancelled",
-                            VenueId = 3L
-                        });
                 });
 
             modelBuilder.Entity("EventEaseAdmin.Models.Customer", b =>
@@ -118,32 +89,6 @@ namespace EventEaseAdmin.Migrations
                     b.HasKey("CustomerId");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            CustomerId = 1L,
-                            Email = "alice@example.com",
-                            FullName = "Alice Smith",
-                            Organization = "Acme Corp",
-                            Phone = "123-456-7890"
-                        },
-                        new
-                        {
-                            CustomerId = 2L,
-                            Email = "bob@example.com",
-                            FullName = "Bob Johnson",
-                            Organization = "Beta LLC",
-                            Phone = "234-567-8901"
-                        },
-                        new
-                        {
-                            CustomerId = 3L,
-                            Email = "carol@example.com",
-                            FullName = "Carol Lee",
-                            Organization = "Gamma Inc",
-                            Phone = "345-678-9012"
-                        });
                 });
 
             modelBuilder.Entity("EventEaseAdmin.Models.Event", b =>
@@ -185,35 +130,6 @@ namespace EventEaseAdmin.Migrations
                     b.HasIndex("VenueId");
 
                     b.ToTable("Events");
-
-                    b.HasData(
-                        new
-                        {
-                            EventId = 1L,
-                            CustomerId = 1L,
-                            Description = "Annual technology expo.",
-                            EventDate = new DateTime(2025, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventName = "Tech Expo",
-                            VenueId = 1L
-                        },
-                        new
-                        {
-                            EventId = 2L,
-                            CustomerId = 2L,
-                            Description = "Business leaders summit.",
-                            EventDate = new DateTime(2025, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventName = "Business Summit",
-                            VenueId = 2L
-                        },
-                        new
-                        {
-                            EventId = 3L,
-                            CustomerId = 3L,
-                            Description = "Outdoor music festival.",
-                            EventDate = new DateTime(2025, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventName = "Music Festival",
-                            VenueId = 3L
-                        });
                 });
 
             modelBuilder.Entity("EventEaseAdmin.Models.Venue", b =>
@@ -247,32 +163,6 @@ namespace EventEaseAdmin.Migrations
                     b.HasKey("VenueId");
 
                     b.ToTable("Venues");
-
-                    b.HasData(
-                        new
-                        {
-                            VenueId = 1L,
-                            Capacity = 500,
-                            IsActive = true,
-                            Location = "123 Main St",
-                            VenueName = "Grand Hall"
-                        },
-                        new
-                        {
-                            VenueId = 2L,
-                            Capacity = 200,
-                            IsActive = true,
-                            Location = "456 Elm St",
-                            VenueName = "Conference Center"
-                        },
-                        new
-                        {
-                            VenueId = 3L,
-                            Capacity = 1000,
-                            IsActive = false,
-                            Location = "789 Oak St",
-                            VenueName = "Open Air Arena"
-                        });
                 });
 
             modelBuilder.Entity("EventEaseAdmin.Models.Booking", b =>

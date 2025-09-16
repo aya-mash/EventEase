@@ -1,13 +1,19 @@
-﻿namespace EventEaseAdmin.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace EventEaseAdmin.Models
 {
 
     public class Customer
     {
         public Guid CustomerId { get; set; }
-        public string FullName { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string Phone { get; set; } = string.Empty;
-        public string Organization { get; set; } = string.Empty;
+        [Required, StringLength(100)]
+        public string FullName { get; set; }
+        [Required, StringLength(100)]
+        [EmailAddress]
+        public string Email { get; set; }
+        [StringLength(20)]
+        public string? Phone { get; set; }
+        [StringLength(100)]
+        public string? Organization { get; set; }
     }
-
 }
