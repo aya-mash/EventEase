@@ -1,0 +1,37 @@
+@page
+@model EventEaseAdmin.Pages.Customers.IndexModel
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h1>Customers</h1>
+<p>
+    <a asp-page="Create" class="btn btn-success mb-2">Create New Customer</a>
+</p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Organization</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.CustomerList)
+    {
+        <tr>
+            <td>@item.FullName</td>
+            <td>@item.Email</td>
+            <td>@item.Phone</td>
+            <td>@item.Organization</td>
+            <td>
+                <a asp-page="Edit" asp-route-id="@item.CustomerId" class="btn btn-sm btn-primary">Edit</a>
+                <a asp-page="Details" asp-route-id="@item.CustomerId" class="btn btn-sm btn-info">Details</a>
+                <a asp-page="Delete" asp-route-id="@item.CustomerId" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+@page
+@model EventEaseAdmin.Pages.Venues.CreateModel
+@{
+    ViewData["Title"] = "Create Venue";
+}
+
+<h1>Create Venue</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Venue.VenueName"></label>
+        <input asp-for="Venue.VenueName" class="form-control" />
+        <span asp-validation-for="Venue.VenueName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Venue.Location"></label>
+        <input asp-for="Venue.Location" class="form-control" />
+        <span asp-validation-for="Venue.Location" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Venue.Capacity"></label>
+        <input asp-for="Venue.Capacity" class="form-control" />
+        <span asp-validation-for="Venue.Capacity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Venue.ImageUrl"></label>
+        <input asp-for="Venue.ImageUrl" class="form-control" />
+        <span asp-validation-for="Venue.ImageUrl" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Venue.IsActive"></label>
+        <select asp-for="Venue.IsActive" class="form-control">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+        <span asp-validation-for="Venue.IsActive" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
